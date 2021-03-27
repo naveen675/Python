@@ -1,0 +1,2 @@
+Amazon US Brand Compliance Report,Product Name (Salsify),Product ID,ASIN,Name Compliance (%),Description Compliance (%),Bullet Compliance (%),Main Image Compliance (%),Goal Price Difference ($),MAP Difference ($),Retailer data as of,filename
+Target US Brand Compliance Report,Product Name (Salsify),Product ID,RSU,Name Compliance (%),Description Compliance (%),Bullet Compliance (%),Main Image Compliance (%),Goal Price Difference ($),MAP Difference ($),Retailer data as of,filename
