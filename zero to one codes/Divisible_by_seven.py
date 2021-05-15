@@ -1,4 +1,10 @@
 import time;
+
+#divisible by 7 but are not a multiple of 5,numbers obtained printed in a comma-separated sequence on a single line. 
+#implemented in different ways using list join,comprehension,generators.
+
+
+
 ######## List Join #########
 
 # def divisible_by_seven(num1,num2):
