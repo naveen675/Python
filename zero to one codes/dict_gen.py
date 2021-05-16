@@ -9,18 +9,18 @@
 
 ###### Using Dictionar Comprehension #######
 
-def dict_gen(n):
+# def dict_gen(n):
     
-    return {k:k*k for k in range(1,n+1)}
+#     return {k:k*k for k in range(1,n+1)}
 
 
 
 
 
 ###### Using Generator #######
-# def dict_gen(n):
-#     for i in range(1,n+1):
-#         yield i*i
+def dict_gen(n):
+    for i in range(1,n+1):
+        yield i*i
 
 
 if __name__=='__main__':
