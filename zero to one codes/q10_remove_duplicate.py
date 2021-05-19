@@ -1,4 +1,4 @@
-
+#takes space seperated string as input and prints by removing duplicates
 ####### Using join #######
 # def rm_duplicate(s):
 #     s = set(s)
