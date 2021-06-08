@@ -1,0 +1,21 @@
+
+
+Itertools
+
+
+Import itertools
+
+def product(n1,n2):
+	print( itertools.product(n1,n2) )
+
+
+if __name__ ==  '__main__':
+	n1 = input()
+	n2 = input()
+	
+	
+	
+	
+
+
+
