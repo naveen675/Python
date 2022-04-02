@@ -1,35 +1,42 @@
-from distutils.log import debug
-from flask import Flask
-from flask import request
-import sqlite3
+from ast import Global
+from flask import Flask,jsonify,request
+import jwt
+import datetime
+from functools import wraps
 
 app = Flask(__name__)
 
+token = None
 
-def validateCredentials(username,password):
 
-    userDbConnection = sqlite3.connect("user.db")
-    print("Connected to USER Db")
-    rows = (userDbConnection.execute(f'''
-    SELECT Password FROM USERINFO WHERE UserID ="{username}"; '''))
-    
-    for row in rows:
-        passwordInDb = row[0]
-        if(str(passwordInDb) == password):
-            return True
-    return False
+app.config['SECRET_KEY'] = 'naveensainidamanuri'
 
-@app.route('/login/<username>,<password>', methods=["GET"])
+def token_required(f):
+    @wraps(f)
+    def decorator(*args,**kwargs):
+        
+        print(token)
+        if not token:
+            return jsonify({'message':'Token is missing!'})
+        
+        return f(*args, **kwargs)
+    return decorator 
+
+@app.route('/protected')
+@token_required
+def protected():
+    return jsonify({'message':'This is a valid token'})
+
+@app.route('/login/<username>,<password>')
 def login(username,password):
-    
-    loginStatus = validateCredentials(username,password)
-    if(loginStatus):
-        return f"Login successful UserName: {username}"
 
-    return "login Unsuccessful"
+    if  (password == '123456'):
 
-    
+        token = jwt.encode({'user':username,'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
+        return jsonify({'token':token})
 
+    else:
+        return "invalid"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True)
