@@ -8,7 +8,6 @@ app = Flask(__name__)
 
 token = None
 
-
 app.config['SECRET_KEY'] = 'naveensainidamanuri'
 
 def token_required(f):
