@@ -21,19 +21,18 @@ def token_required(f):
         return f(*args, **kwargs)
     return decorator 
 
-@app.route('/protected')
+@app.route('/update')
 @token_required
-def protected():
+def update():
     return jsonify({'message':'This is a valid token'})
 
 @app.route('/login/<username>,<password>')
 def login(username,password):
 
-    if  (password == '123456'):
+    if (password == '123456'):
 
         token = jwt.encode({'user':username,'exp':datetime.datetime.utcnow() + datetime.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-        return jsonify({'token':token})
-
+        return token
     else:
         return "invalid"
 
