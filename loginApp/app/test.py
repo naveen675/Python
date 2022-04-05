@@ -1,6 +1,6 @@
 import sqlite3
 from flask import Flask
-
+from SQLAlchemy import sqlalchemy
 
 conn = sqlite3.connect("user.db")
 print("Connected to Db")
@@ -30,26 +30,15 @@ for row in rows:
     print("Password "+ str(row[2]))
 
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
-# db = SQLAlchemy(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////tmp/test.db"
+db = SQLAlchemy(app)
 
-# class Users(db.Model):
+class Users(db.Model):
 
-#    id = db.Column(db.Integer, primary_key=True)
-#    name = db.Column(db.String(50))
-#    username = db.column(db.String(60))
-#    password = db.Column(db.String(50))
-
-
-# db.create_all()
-
-# if __name__ =="__main__":
-
-#     app.run(debug=True)
-
-
-
-
+   id = db.Column(db.Integer, primary_key=True)
+   name = db.Column(db.String(50))
+   username = db.column(db.String(60))
+   password = db.Column(db.String(50))
